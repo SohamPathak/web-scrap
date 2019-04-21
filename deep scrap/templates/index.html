@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Deep Scrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
+    <!-- Bootstrap theme -->
+    <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container theme-showcase" role="main">
+       
+      <div class="jumbotron">
+        <h1>DEEP SCRAP</h1>
+        <a type="button" class="btn btn-link" href="{{ url_for('sign') }}">Get Scrapping</a>
+      </div>
+ 
+
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <div class="page-header">
+     {{"LOG "}}
+     </div>
+     <a type="button" class="btn btn-link" href="{{ url_for('download_csv') }}">Download the CSV file</a>
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible" role="alert">
+      
+      {{ message }}
+
+      </div>
+         
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+
+      <div class="page-header">
+        <h1>{{ name }}</h1>
+      </div>
+      {% for cont in containers %}
+      <div class="well">
+       <a href="{{filter1(cont,4)}}"><h4>{{"Title : "}}{{ filter1(cont,0) }}</h4></a>
+      <h4>{{"Minimum Price : "}}{{ filter1(cont,1) }}</h4>
+      <h4>{{"Maximum Price : "}}{{ filter1(cont,2) }}</h4>
+      <h4>{{"Minimum Amount : "}}{{ filter1(cont,3) }}</h4>
+      <h4>{{"Years :"}}{{filter1(cont,5)}}</h4>
+
+      </div>
+       {% endfor %}
+    </div> <!-- /container -->
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+
+
+ <section class="cid-qZ19ssl7Pi" id="footer5-d">
+
+  
+
+    <div class="container">
+
+        <div class="footer-lower">
+
+            <div class="media-container-row mbr-white">
+                <div class="col-md-6 copyright">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        © Copyright 2018 Soham Pathak - All Rights Reserved
+                    </p> <a href="#" class="text-black">ABOUT</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="text-black">CONTACT</a>
+                </div>
+
+        </div>
+    </div>
+</section>
+
+  </body>
+</html>
